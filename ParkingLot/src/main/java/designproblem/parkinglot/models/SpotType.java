@@ -1,6 +1,6 @@
 package designproblem.parkinglot.models;
 
-public enum SlotType {
+public enum SpotType {
     SMALL,
     MEDIUM,
     LARGE

@@ -1,6 +1,6 @@
 package designproblem.parkinglot.models;
 
-public enum SlotStatus {
+public enum SpotStatus {
     VACANT,
     OCCUPIED,
     INACTIVE

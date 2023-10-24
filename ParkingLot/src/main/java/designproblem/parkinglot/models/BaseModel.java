@@ -1,9 +1,12 @@
 package designproblem.parkinglot.models;
 
-import java.time.LocalDateTime;
+import lombok.Data;
 
+import java.time.LocalDateTime;
+import java.util.UUID;
+@Data
 public abstract class BaseModel {
-    private long id;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+    protected UUID id;
+    protected LocalDateTime createdAt;
+    protected LocalDateTime updatedAt;
 }
