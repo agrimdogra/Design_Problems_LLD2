@@ -1,9 +1,11 @@
 package designproblem.parkinglot.models;
 
+import lombok.Data;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
+@Data
 public class Floor extends BaseModel{
     private int floorNumber;
     private List<ParkingSpot> spots = new ArrayList<>();

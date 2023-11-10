@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.toList;
+
 @Getter
 @ToString(callSuper = true)
 @Data
@@ -25,17 +27,21 @@ public class CreateParkingLotRequest {
 
     public ParkingLot toParkingLot(){
         List<Floor> floors1 = floors.stream().map(floor->
-            Floor.builder()
-                    .floorNumber(floor.getFloorNumber())
-                    .withSpots(floor.getSpots().stream()
-                            .map(spot-> ParkingSpot.builder()
-                                    .number(++ParkingSpot.spotCounter)
-                                    .floorNumber(floor.getFloorNumber())
-                                    .spotType(spot.getSpotType())
-                                    .spotStatus(spot.getSpotStatus())
-                                    .build()
-                            ).toList() )
-                    .build()
+                {
+                    ParkingSpot.spotCounter = 0;
+                    return Floor.builder()
+                            .floorNumber(floor.getFloorNumber())
+                            .withSpots(floor.getSpots().stream()
+                                    .map(spot ->
+                                            ParkingSpot.builder()
+                                                    .number(++ParkingSpot.spotCounter)
+                                                    .floorNumber(floor.getFloorNumber())
+                                                    .spotType(spot.getSpotType())
+                                                    .spotStatus(spot.getSpotStatus())
+                                                    .build()
+                                    ).map(parkingSpot -> (ParkingSpot) parkingSpot.setId()).toList())
+                            .build();
+                }
         ).toList();
 
 

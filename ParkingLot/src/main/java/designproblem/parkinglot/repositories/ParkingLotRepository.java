@@ -12,6 +12,7 @@ public class ParkingLotRepository {
     private List<ParkingLot> parkingLots = new ArrayList<>();
     public ParkingLot save(ParkingLot parkingLot){
         parkingLots.add(parkingLot);
+
         return parkingLot;
     }
 
@@ -23,5 +24,9 @@ public class ParkingLotRepository {
         return parkingLots.stream()
                 .filter(lot->(lot.getId().equals(id)) )
                 .findFirst();
+    }
+
+    public Optional<ParkingLot> getFirstParkingLot() {
+        return parkingLots.stream().findFirst();
     }
 }

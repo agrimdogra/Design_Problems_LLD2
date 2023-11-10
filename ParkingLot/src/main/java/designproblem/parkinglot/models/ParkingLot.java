@@ -1,7 +1,8 @@
 package designproblem.parkinglot.models;
 
 import jakarta.servlet.http.PushBuilder;
-import lombok.Data;
+import lombok.*;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
